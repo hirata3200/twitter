@@ -1,16 +1,30 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <Form v-on:tweeted="appAction" />
+  <p>{{tweeted}}</p>
+  <Tweet msg/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Form from './components/Form.vue'
+import Tweet from './components/Tweet.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    Form,
+    Tweet
+  },
+  data() {
+    return {
+      tweeted: '',
+    }
+  },
+  methods: {
+    appAction(tweet){
+      console.log(tweet);
+      this.tweeted = tweet
+    }
+  },
 }
 </script>
 
